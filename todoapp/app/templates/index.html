@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8"> 
+	<title>Expence list</title> 
+	<link rel="stylesheet" type="text/css" href="main.css"> 
+
+</head> 
+<body bgcolor="88888">
+	<center>
+    <h1>Expence list</h1> 
+    </center> 
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <marquee>
+    	<p><h2>Add your <b><i>expence</i></b> here.</h2></p>
+    </marquee>
+    <center>
+	<div><h3>Add an expence:</h3> 
+		<form action="{{ url_for('add') }}" method="POST"> 
+			<input type="text" name="todoitem"> 
+			<input type="submit" value="Add to list" class="button"> 
+		</form> 
+	</div>
+	</center> 
+	<div> 
+		<h2><i>Expence list</i></h2> 
+		<ul> 
+			{% for todo in incomplete %} 
+			<li style="font-size: 20pt" class='mark'>{{ todo.text }} <a href="{{ url_for('complete', id=todo.id) }}">Delete</a></li> 
+			{% endfor %}	 
+		</ul> 		 
+	</div> 
+	<marquee>
+	<img src="{{url_for('static', filename='money.jpg')}}" align="middle" />
+    </marquee>
+</body> 
+</html> 
